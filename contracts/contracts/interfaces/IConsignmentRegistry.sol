@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 /**
  * @title IConsignmentRegistry
- * @dev Interface for the CertLedger Consignment Registry according to PRD v1.1 §7.3.
+ * @dev Interface for the UNVEIL Consignment Registry according to PRD v1.1 §7.3.
  */
 interface IConsignmentRegistry {
     enum LotStatus {

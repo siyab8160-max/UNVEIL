@@ -1,8 +1,8 @@
 {
-  "name": "certledger-contracts",
+  "name": "unveil-contracts",
   "version": "0.1.0",
   "private": true,
-  "description": "Smart contracts for CertLedger ethical sourcing verification platform",
+  "description": "Smart contracts for UNVEIL ethical sourcing verification platform",
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",

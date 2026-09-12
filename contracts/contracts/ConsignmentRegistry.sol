@@ -6,7 +6,7 @@ import "./interfaces/ICertificateRegistry.sol";
 
 /**
  * @title ConsignmentRegistry
- * @notice Registry of traceable product consignments (Lots) for CertLedger.
+ * @notice Registry of traceable product consignments (Lots) for UNVEIL.
  * @dev Conforms strictly to PRD v1.1 §7.3 and §8.1.
  *
  * OWNERSHIP & MASS-BALANCE BOUNDARIES:

@@ -69,7 +69,7 @@ export const WalletAuthModal: React.FC<WalletAuthModalProps> = ({
         <div className="modal-body">
           <div className="auth-explainer-box">
             <p className="auth-explainer-lead">
-              CertLedger uses standard EIP-4361 cryptographic signatures for application authentication.
+              UNVEIL uses standard EIP-4361 cryptographic signatures for application authentication.
             </p>
             <div className="auth-distinction-badge">
               <span className="distinction-item">

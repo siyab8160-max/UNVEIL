@@ -44,7 +44,7 @@ export const ReportModal: React.FC<ReportModalProps> = ({
       reporterReference: reporterRef,
       evidence: {
         consumerNote: details.trim(),
-        submittedVia: "CertLedger Public Verification Web UI",
+        submittedVia: "UNVEIL Public Verification Web UI",
         submittedTimestamp: new Date().toISOString(),
       },
     });

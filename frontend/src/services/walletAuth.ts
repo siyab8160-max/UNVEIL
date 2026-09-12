@@ -99,7 +99,7 @@ export async function signInWithEthereum(
   const message = generateSiweMessage({
     domain,
     address,
-    statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+    statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
     uri,
     version: "1",
     chainId: SEPOLIA_CHAIN_ID,

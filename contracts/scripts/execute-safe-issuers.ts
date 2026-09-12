@@ -17,7 +17,7 @@ async function main() {
   const wallet = new ethers.Wallet(pk, provider);
 
   console.log("===============================================================");
-  console.log("      CertLedger Safe Issuer Execution (3-of-5 Multisig)       ");
+  console.log("        UNVEIL Safe Issuer Execution (3-of-5 Multisig)         ");
   console.log("===============================================================");
   console.log("Safe Address:   ", safeAddress);
   console.log("Caller Account: ", wallet.address);

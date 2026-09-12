@@ -10,7 +10,7 @@ import { seedStandards } from "../src/seed-standards";
 import { CONFIG, YIELD_BENCHMARK_CONFIG } from "../src/config";
 import authService from "../src/auth";
 
-describe("CertLedger Phase 3 Indexer & Anomaly Engine Test Suite", () => {
+describe("UNVEIL Phase 3 Indexer & Anomaly Engine Test Suite", () => {
   let app: any;
   let indexer: IndexerService;
   let anomalyEngine: AnomalyEngine;
@@ -372,8 +372,8 @@ describe("CertLedger Phase 3 Indexer & Anomaly Engine Test Suite", () => {
     let reviewerToken: string;
 
     before(async () => {
-      // Find the case created by reports
-      const c = await prisma.case.findFirst({ where: { status: "OPEN" } });
+      // Find an open case (CERT-MBA-001) to test transitions on, keeping LOT-REPORT-TARGET-001 open for Section 10
+      const c = await prisma.case.findFirst({ where: { certificateID: "CERT-MBA-001" } });
       expect(c).to.not.be.null;
       caseID = c!.caseID;
       const session = authService.createSession("0x4b07A2a7E631a808EF95CFe5cA5b8463d7b1a3Fd");

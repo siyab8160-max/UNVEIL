@@ -121,7 +121,7 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
           title: "Certified Organic Arabica Coffee",
           subtitle: `Verified Lot: ${lot?.lotID} • USDA National Organic Program (7 CFR Part 205)`,
           explanation:
-            "This product lot is linked to an active, accredited organic certification on the Ethereum Sepolia blockchain. CertLedger's mass-balance engine mathematically enforces that the claimed physical volume cannot exceed the certified harvest allocation.",
+            "This product lot is linked to an active, accredited organic certification on the Ethereum Sepolia blockchain. UNVEIL's mass-balance engine mathematically enforces that the claimed physical volume cannot exceed the certified harvest allocation.",
         };
       case "EXPIRED":
         return {

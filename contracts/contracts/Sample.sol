@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Context.sol";
 /**
  * @title Sample
  * @dev Minimal placeholder contract to validate the Hardhat compilation and test environment.
- * Note: Business logic for CertLedger contracts is deliberately excluded in Phase 0.
+ * Note: Business logic for UNVEIL contracts is deliberately excluded in Phase 0.
  */
 contract Sample is Context {
     string private _status;

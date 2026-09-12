@@ -1,6 +1,6 @@
-# CertLedger Project Rules
+# UNVEIL Project Rules
 
-These rules are mandatory for all work on the CertLedger project.
+These rules are mandatory for all work on the UNVEIL project.
 
 1. **Source of Truth**:
    `PRD_Ethical_Sourcing_Verification_v1.1.md` in the repository root is the absolute source of truth for the project. Do not modify the PRD.

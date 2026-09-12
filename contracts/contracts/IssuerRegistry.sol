@@ -6,7 +6,7 @@ import "./interfaces/IIssuerRegistry.sol";
 
 /**
  * @title IssuerRegistry
- * @notice Authoritative on-chain registry of accredited certifying bodies for CertLedger.
+ * @notice Authoritative on-chain registry of accredited certifying bodies for UNVEIL.
  * @dev Conforms strictly to PRD v1.1 §7.1 and §8.1.
  *
  * ARCHITECTURAL NOTE ON MULTISIG / GOVERNANCE:

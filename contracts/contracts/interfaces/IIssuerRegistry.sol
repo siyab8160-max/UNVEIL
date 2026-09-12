@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 /**
  * @title IIssuerRegistry
- * @dev Interface for the CertLedger Issuer Registry according to PRD v1.1 §7.1.
+ * @dev Interface for the UNVEIL Issuer Registry according to PRD v1.1 §7.1.
  */
 interface IIssuerRegistry {
     enum IssuerStatus {

@@ -31,7 +31,7 @@ describe("Phase 5 Authenticated Issuer & Producer Dashboard Test Suite", () => {
       const message = generateSiweMessage({
         domain: "localhost:5173",
         address: "0x1111111111111111111111111111111111111111",
-        statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+        statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
         uri: "http://localhost:5173",
         version: "1",
         chainId: 11155111,
@@ -101,7 +101,7 @@ describe("Phase 5 Authenticated Issuer & Producer Dashboard Test Suite", () => {
       );
 
       expect(screen.getByText(/Network Mismatch Detected \(Chain ID: 1\)/)).toBeInTheDocument();
-      expect(screen.getByText(/CertLedger operations require the/)).toBeInTheDocument();
+      expect(screen.getByText(/UNVEIL operations require the/)).toBeInTheDocument();
 
       // Rerender on Sepolia
       rerender(<NetworkMismatchBanner currentChainId={11155111} />);

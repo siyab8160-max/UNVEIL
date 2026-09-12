@@ -210,7 +210,7 @@ export function App() {
       <footer className="app-footer">
         <div className="footer-content">
           <p className="footer-text">
-            <strong>CertLedger Protocol:</strong> Consumer verification evaluates live state directly against
+            <strong>UNVEIL Protocol:</strong> Consumer verification evaluates live state directly against
             deployed smart contracts on Ethereum Sepolia.
           </p>
           <div className="contract-links">

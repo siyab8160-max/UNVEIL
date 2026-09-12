@@ -594,13 +594,13 @@ if (require.main === module) {
   seedStandards()
     .then(() => {
       app.listen(CONFIG.PORT, () => {
-        console.log(`[CertLedger Indexer] Server listening on port ${CONFIG.PORT}`);
+        console.log(`[UNVEIL Indexer] Server listening on port ${CONFIG.PORT}`);
       });
     })
     .catch((err) => {
-      console.error("[CertLedger Indexer] Standards seeding error:", err);
+      console.error("[UNVEIL Indexer] Standards seeding error:", err);
       app.listen(CONFIG.PORT, () => {
-        console.log(`[CertLedger Indexer] Server listening on port ${CONFIG.PORT}`);
+        console.log(`[UNVEIL Indexer] Server listening on port ${CONFIG.PORT}`);
       });
     });
 }

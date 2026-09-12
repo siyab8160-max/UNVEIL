@@ -33,7 +33,7 @@ const CONSIGNMENT_REGISTRY_ABI = [
 
 async function main() {
   console.log("===============================================================");
-  console.log("    CertLedger Phase 6 — Controlled Sepolia Revocation Loop    ");
+  console.log("       UNVEIL Phase 6 — Controlled Sepolia Revocation Loop     ");
   console.log("===============================================================");
 
   const rpcUrl = process.env.SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com";

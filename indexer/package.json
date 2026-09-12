@@ -1,8 +1,8 @@
 {
-  "name": "certledger-indexer",
+  "name": "unveil-indexer",
   "version": "0.1.0",
   "private": true,
-  "description": "Indexer, anomaly detection, and analytics service for CertLedger",
+  "description": "Indexer, anomaly detection, and analytics service for UNVEIL",
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/server.ts",

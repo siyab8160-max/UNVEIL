@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 /**
- * @notice CertLedger Core Contracts Deployment Script
+ * @notice UNVEIL Core Contracts Deployment Script
  * Deploys:
  * 1. IssuerRegistry
  * 2. CertificateRegistry
@@ -17,7 +17,7 @@ async function main() {
   const chainId = (await ethers.provider.getNetwork()).chainId;
 
   console.log("===============================================================");
-  console.log("           CertLedger Core Deployment — Phase 2                ");
+  console.log("              UNVEIL Core Deployment — Phase 2                 ");
   console.log("===============================================================");
   console.log(`Network Name:  ${network.name}`);
   console.log(`Chain ID:      ${chainId}`);

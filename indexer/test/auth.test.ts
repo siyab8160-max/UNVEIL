@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import { createApp } from "../src/server";
 import { CONFIG } from "../src/config";
 
-describe("CertLedger Phase 5 Server-Side SIWE Authentication Boundary", () => {
+describe("UNVEIL Phase 5 Server-Side SIWE Authentication Boundary", () => {
   const app = createApp();
 
   function buildSiweMessage(params: {
@@ -44,7 +44,7 @@ describe("CertLedger Phase 5 Server-Side SIWE Authentication Boundary", () => {
     const message = buildSiweMessage({
       domain: "localhost:5173",
       address: wallet.address,
-      statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+      statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
       uri: "http://localhost:5173",
       version: "1",
       chainId: CONFIG.CHAIN_ID, // 11155111 Sepolia
@@ -74,7 +74,7 @@ describe("CertLedger Phase 5 Server-Side SIWE Authentication Boundary", () => {
     const message = buildSiweMessage({
       domain: "localhost:5173",
       address: wallet.address,
-      statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+      statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
       uri: "http://localhost:5173",
       version: "1",
       chainId: CONFIG.CHAIN_ID,
@@ -106,7 +106,7 @@ describe("CertLedger Phase 5 Server-Side SIWE Authentication Boundary", () => {
     const message = buildSiweMessage({
       domain: "localhost:5173",
       address: wallet.address,
-      statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+      statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
       uri: "http://localhost:5173",
       version: "1",
       chainId: 1, // Mainnet instead of Sepolia
@@ -133,7 +133,7 @@ describe("CertLedger Phase 5 Server-Side SIWE Authentication Boundary", () => {
     const message = buildSiweMessage({
       domain: "localhost:5173",
       address: wallet1.address,
-      statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+      statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
       uri: "http://localhost:5173",
       version: "1",
       chainId: CONFIG.CHAIN_ID,
@@ -160,7 +160,7 @@ describe("CertLedger Phase 5 Server-Side SIWE Authentication Boundary", () => {
     const message = buildSiweMessage({
       domain: "localhost:5173",
       address: wallet.address,
-      statement: "Sign in to CertLedger to access the Issuer & Producer Dashboard.",
+      statement: "Sign in to UNVEIL to access the Issuer & Producer Dashboard.",
       uri: "http://localhost:5173",
       version: "1",
       chainId: CONFIG.CHAIN_ID,

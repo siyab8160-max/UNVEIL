@@ -3,7 +3,7 @@ pragma solidity ^0.8.24;
 
 /**
  * @title ICertificateRegistry
- * @dev Interface for the CertLedger Certificate Registry according to PRD v1.1 §7.2.
+ * @dev Interface for the UNVEIL Certificate Registry according to PRD v1.1 §7.2.
  */
 interface ICertificateRegistry {
     enum CertificateStatus {

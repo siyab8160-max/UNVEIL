@@ -124,7 +124,7 @@ export async function checkSepoliaReadiness(): Promise<SepoliaReadinessResult> {
 
 async function main() {
   console.log("===============================================================");
-  console.log("      CertLedger Sepolia Testnet Non-Broadcast Audit           ");
+  console.log("        UNVEIL Sepolia Testnet Non-Broadcast Audit             ");
   console.log("===============================================================");
 
   const audit = await checkSepoliaReadiness();

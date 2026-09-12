@@ -61,7 +61,7 @@ async function main() {
   }
 
   console.log("===============================================================");
-  console.log("      CertLedger Real Issuer Seeding via Gnosis Safe           ");
+  console.log("        UNVEIL Real Issuer Seeding via Gnosis Safe             ");
   console.log("===============================================================");
   console.log(`Target IssuerRegistry: ${issuerRegistryAddress}`);
   console.log(`Authorized Safe:       ${safeAddress}`);

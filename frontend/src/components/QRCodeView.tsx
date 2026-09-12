@@ -32,7 +32,7 @@ export const QRCodeView: React.FC<QRCodeViewProps> = ({ lotID, baseUrl }) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `CertLedger-QR-${lotID}.svg`;
+    link.download = `UNVEIL-QR-${lotID}.svg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

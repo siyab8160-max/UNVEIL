@@ -27,7 +27,7 @@ export const NetworkMismatchBanner: React.FC<NetworkMismatchBannerProps> = ({
             Network Mismatch Detected (Chain ID: {currentChainId})
           </strong>
           <p className="banner-description">
-            CertLedger operations require the <strong>Ethereum Sepolia</strong> testnet (Chain ID:{" "}
+            UNVEIL operations require the <strong>Ethereum Sepolia</strong> testnet (Chain ID:{" "}
             <code>{SEPOLIA_CHAIN_ID}</code>). State-changing transactions are blocked while connected to an unsupported network.
           </p>
         </div>

@@ -42,7 +42,7 @@ const STATUS_NAMES: Record<number, string> = {
 
 async function main() {
   console.log("=========================================================================");
-  console.log(" CertLedger Phase 6 — Demonstration: UI-to-UI Revocation Workflow Flow ");
+  console.log("   UNVEIL Phase 6 — Demonstration: UI-to-UI Revocation Workflow Flow     ");
   console.log("=========================================================================");
 
   const rpcUrl = process.env.SEPOLIA_RPC_URL || "https://ethereum-sepolia-rpc.publicnode.com";
@@ -161,7 +161,7 @@ async function main() {
     const siweMessage =
       `localhost:5173 wants you to sign in with your Ethereum account:\n` +
       `${wallet.address}\n\n` +
-      `Sign in to CertLedger to access the Regulator & Auditor Dashboard.\n\n` +
+      `Sign in to UNVEIL to access the Regulator & Auditor Dashboard.\n\n` +
       `URI: http://localhost:5173\n` +
       `Version: 1\n` +
       `Chain ID: 11155111\n` +
