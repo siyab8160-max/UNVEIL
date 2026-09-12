@@ -1,0 +1,22 @@
+{
+  "network": "sepolia",
+  "chainId": "11155111",
+  "timestamp": "2026-09-11T21:15:24.882Z",
+  "deployer": "0x4b07A2a7E631a808EF95CFe5cA5b8463d7b1a3Fd",
+  "safeMultisigAddress": "0x6709dad911F1b37693399a93D778508067B2FDfd",
+  "arbitrationAddress": "0x4b07A2a7E631a808EF95CFe5cA5b8463d7b1a3Fd",
+  "contracts": {
+    "IssuerRegistry": {
+      "address": "0x7c787f9AbDE336c8A377f8fF08527B4e3B918dFA",
+      "txHash": "0x6bc2bc647c207b8c8a96c2c5a8e89f6d5a7c1df6d162099daaff2294306f6ee1"
+    },
+    "CertificateRegistry": {
+      "address": "0x021A1289Aa4589A1a4B83C8b878a91aDD0F0C83b",
+      "txHash": "0x1ebf189e8b7d08cf95c6c954967bb97eb8bf4f2704c98ced63cda53b979d087e"
+    },
+    "ConsignmentRegistry": {
+      "address": "0xC1fF045DCB2731AaFee1d398509b022Ed1F51688",
+      "txHash": "0x4f94d13747baa55ca3ff526608236b9731fc20974697a46c7ab48580e8be61b9"
+    }
+  }
+}

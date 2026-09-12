@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0",
+  "notice": "Source-controlled reference data for CertLedger. Not stored on-chain in Phase 2. To be ingested into the indexer/PostgreSQL Standards table in Phase 3.",
+  "standards": [
+    {
+      "standard_id": "USDA-NOP-ORGANIC",
+      "standard_name": "USDA National Organic Program (7 CFR Part 205)",
+      "commodity": "Coffee (Green and Roasted Beans)",
+      "accrediting_authority": "United States Department of Agriculture (USDA) Agricultural Marketing Service (AMS)",
+      "authoritative_source": "USDA Organic INTEGRITY Database",
+      "authoritative_source_url": "https://organic.ams.usda.gov/Integrity/",
+      "regulatory_citation": "Title 7, Code of Federal Regulations, Part 205 (7 CFR Part 205)",
+      "covered_dimensions": [
+        "farming_practices",
+        "synthetic_substance_prohibition",
+        "soil_fertility_and_nutrient_management",
+        "pest_weed_and_disease_management",
+        "processing_and_handling_separation",
+        "non_gmo_excluded_methods",
+        "supply_chain_traceability"
+      ],
+      "excluded_dimensions": [
+        "fair_wages_and_labor_conditions",
+        "living_wage_and_fair_pricing",
+        "carbon_neutrality_and_ghg_emissions",
+        "shipping_and_transport_emissions",
+        "biodegradable_packaging"
+      ],
+      "covered_dimension_citations": {
+        "farming_practices": "7 CFR §205.200, §205.201",
+        "synthetic_substance_prohibition": "7 CFR §205.105, §205.601",
+        "soil_fertility_and_nutrient_management": "7 CFR §205.203",
+        "pest_weed_and_disease_management": "7 CFR §205.206",
+        "processing_and_handling_separation": "7 CFR §205.270, §205.272",
+        "non_gmo_excluded_methods": "7 CFR §205.105(a), §205.2",
+        "supply_chain_traceability": "7 CFR §205.103, 88 FR 3548"
+      },
+      "excluded_dimension_rationales": {
+        "fair_wages_and_labor_conditions": "OFPA statute (7 U.S.C. 6501) limits NOP authority to organic production/handling; no labor/wage mandate.",
+        "living_wage_and_fair_pricing": "7 CFR Part 205 contains no price floors or social premiums.",
+        "carbon_neutrality_and_ghg_emissions": "No greenhouse gas metrics or carbon neutrality requirements exist under NOP.",
+        "shipping_and_transport_emissions": "Post-harvest transport logistics emissions outside NOP regulatory scope.",
+        "biodegradable_packaging": "7 CFR §205.272 restricts packaging contamination but permits conventional food-grade plastics/foil."
+      }
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 1. Immutable log of all observed on-chain events for deduplication and replay
+model IndexedEvent {
+  id              String   @id @default(uuid())
+  chainId         Int
+  contractAddress String
+  transactionHash String
+  blockNumber     Int
+  logIndex        Int
+  eventName       String
+  payload         Json
+  blockTimestamp  DateTime
+  processed       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+
+  @@unique([chainId, transactionHash, logIndex])
+  @@index([blockNumber])
+  @@index([contractAddress, eventName])
+}
+
+// 2. Non-authoritative indexed projection of certificates for analytics
+// NOTE: Consumer verification status MUST be read live from smart contracts.
+model CertificateIndex {
+  certificateID          String        @id
+  issuer                 String
+  holder                 String
+  standardID             String
+  certifiedQuantityGrams BigInt
+  remainingQuantityGrams BigInt
+  validFrom              DateTime
+  validUntil             DateTime
+  isRevoked              Boolean       @default(false)
+  revocationReason       String?
+  revokedBy              String?
+  latestBlock            Int
+  latestTxHash           String
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+}
+
+// 3. Non-authoritative indexed projection of lots
+// NOTE: Consumer verification status MUST be read live from smart contracts.
+model LotIndex {
+  lotID                  String           @id
+  certificateID          String
+  quantityGrams          BigInt
+  currentOwner           String
+  status                 String           // "ACTIVE" | "CONSUMED" (Indexed projection only)
+  processDetails         String?
+  reportedAreaHectares   Decimal?         @db.Decimal(12, 4) // Source/reported data only; NOT on-chain truth
+  createdAtBlock         Int
+  createdAtTx            String
+  createdAtTimestamp     DateTime
+  latestBlock            Int
+  latestTxHash           String
+  updatedAt              DateTime         @updatedAt
+
+  @@index([certificateID])
+}
+
+// 4. Graph Edges for fast provenance reconstruction
+model LotLineage {
+  id             String   @id @default(uuid())
+  parentLotID    String
+  childLotID     String
+  operationType  String   // "SPLIT" | "MERGE" | "PROCESS"
+  createdAtBlock Int
+  createdAtTx    String
+
+  @@unique([parentLotID, childLotID])
+  @@index([parentLotID])
+  @@index([childLotID])
+}
+
+// 5. Mirrored Issuers projection
+model IssuerIndex {
+  sourceID            String    @id
+  issuerAddress       String?
+  name                String
+  accreditingBody     String
+  accreditationExpiry DateTime
+  verifiedOwner       String?
+  isRevoked           Boolean   @default(false)
+  revocationReason    String?
+  latestBlock         Int
+  updatedAt           DateTime  @updatedAt
+}
+
+// 6. Standards structured reference data
+model Standard {
+  standardID             String   @id
+  standardName           String
+  commodity              String
+  accreditingAuthority   String
+  authoritativeSource    String
+  authoritativeSourceUrl String
+  regulatoryCitation     String
+  coveredDimensions      String[]
+  excludedDimensions     String[]
+  coveredCitations       Json
+  excludedRationales     Json
+  createdAt              DateTime @default(now())
+}
+
+// 7. Raw Anomaly Flags (Visible to regulators/auditors only)
+model AnomalyFlag {
+  id            String    @id @default(uuid())
+  ruleID        String    // "RULE_MASS_BALANCE_OVERFLOW" | "RULE_YIELD_IMPLAUSIBILITY" | "RULE_STALE_CERTIFICATE_REFERENCE"
+  severity      String    // "LOW" | "MEDIUM" | "HIGH" | "CRITICAL"
+  riskScore     Int       // 0 to 100 (0 for INSUFFICIENT_DATA)
+  status        String    // "FLAGGED" | "INSUFFICIENT_DATA" | "EVALUATED"
+  lotID         String?
+  certificateID String?
+  description   String
+  evidence      Json
+  blockNumber   Int
+  txHash        String
+  detectedAt    DateTime  @default(now())
+  caseID        String?
+  case          Case?     @relation(fields: [caseID], references: [caseID])
+
+  @@index([ruleID])
+  @@index([severity])
+  @@index([lotID])
+  @@index([certificateID])
+}
+
+// 8. Consumer Reports model with transparent deduplication
+model ConsumerReport {
+  reportID          String            @id @default(uuid())
+  lotID             String?
+  certificateID     String?
+  issueType         String            // "PRODUCT_MISLABELING" | "TAMPERED_SEAL" | "SUSPECTED_NON_ORGANIC" | "VOLUME_DISCREPANCY"
+  submittedAt       DateTime          @default(now())
+  reporterReference String            // Safe pseudonymous hash of reporter
+  dedupeKey         String            // Hash of (reporterReference + target + issueType)
+  evidence          Json?
+  createdAt         DateTime          @default(now())
+  caseID            String?
+  case              Case?             @relation(fields: [caseID], references: [caseID])
+
+  @@index([dedupeKey])
+  @@index([lotID])
+  @@index([certificateID])
+}
+
+// 9. Case Model supporting v1.1 review workflow (§7.5)
+model Case {
+  caseID          String           @id @default(uuid())
+  lotID           String?
+  certificateID   String?
+  anomalyType     String           // Dominant anomaly rule or report trigger
+  riskScore       Int
+  status          String           // "OPEN" | "UNDER_REVIEW" | "REVOCATION_PENDING" | "RESOLVED" | "DISMISSED" | "ESCALATED"
+  assignedRole    String           // "ISSUER_REVIEWER" | "ARBITRATION_REGULATOR"
+  openedAt        DateTime         @default(now())
+  reviewer        String?
+  resolution      String?
+  resolvedAt      DateTime?
+  evidence        Json
+  anomalies       AnomalyFlag[]
+  reports         ConsumerReport[]
+  auditLogs       CaseAuditLog[]
+
+  @@index([lotID])
+  @@index([certificateID])
+}
+
+// 10. Immutable Case Audit Trail
+model CaseAuditLog {
+  id             String   @id @default(uuid())
+  caseID         String
+  case           Case     @relation(fields: [caseID], references: [caseID])
+  actor          String
+  action         String
+  previousStatus String?
+  newStatus      String?
+  notes          String?
+  timestamp      DateTime @default(now())
+}
+
+// 11. Report Batch Hash Integrity Anchoring (PRD §7.5.3 v1 Stub)
+model ReportBatchAnchor {
+  id             String   @id @default(uuid())
+  batchNumber    Int      @unique
+  fromTimestamp  DateTime
+  toTimestamp    DateTime
+  reportCount    Int
+  canonicalHash  String   // keccak256 hash of canonically sorted report payloads
+  txHash         String?  // On-chain anchor commitment hash
+  createdAt      DateTime @default(now())
+}
+
+// 12. Indexer Synced Block State
+model IndexerState {
+  contractAddress String   @id
+  lastBlockSynced Int
+  updatedAt       DateTime @updatedAt
+}
